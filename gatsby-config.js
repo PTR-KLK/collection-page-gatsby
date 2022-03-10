@@ -25,7 +25,12 @@ module.exports = {
       },
     },
     `gatsby-plugin-sass`,
-    `gatsby-transformer-json`,
+    {
+      resolve: `gatsby-transformer-json`,
+      options: {
+        typeName: `Collection`,
+      },
+    },
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,

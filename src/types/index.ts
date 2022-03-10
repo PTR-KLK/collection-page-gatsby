@@ -1,5 +1,4 @@
-import { ReactNode } from 'react';
+import { PageProps } from 'gatsby';
+import { CollectionQuery } from '../types/types.generated';
 
-export interface BaseComponentProps {
-  children?: ReactNode;
-}
+export type IndexPageProps = PageProps<CollectionQuery>;

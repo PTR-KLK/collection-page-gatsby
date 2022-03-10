@@ -42,61 +42,66 @@ export type BooleanQueryOperatorInput = {
   nin: InputMaybe<Array<InputMaybe<Scalars['Boolean']>>>;
 };
 
-export type CollectionJson = Node & {
-  __typename?: 'CollectionJson';
+export type Collection = Node & {
+  __typename?: 'Collection';
   children: Array<Node>;
   description: Maybe<Scalars['String']>;
+  gatsbyPath: Maybe<Scalars['String']>;
   id: Scalars['ID'];
-  image: Maybe<CollectionJsonImage>;
+  image: Maybe<CollectionImage>;
   internal: Internal;
   jsonId: Maybe<Scalars['String']>;
   parent: Maybe<Node>;
   title: Maybe<Scalars['String']>;
 };
 
-export type CollectionJsonConnection = {
-  __typename?: 'CollectionJsonConnection';
+export type CollectionGatsbyPathArgs = {
+  filePath: InputMaybe<Scalars['String']>;
+};
+
+export type CollectionConnection = {
+  __typename?: 'CollectionConnection';
   distinct: Array<Scalars['String']>;
-  edges: Array<CollectionJsonEdge>;
-  group: Array<CollectionJsonGroupConnection>;
+  edges: Array<CollectionEdge>;
+  group: Array<CollectionGroupConnection>;
   max: Maybe<Scalars['Float']>;
   min: Maybe<Scalars['Float']>;
-  nodes: Array<CollectionJson>;
+  nodes: Array<Collection>;
   pageInfo: PageInfo;
   sum: Maybe<Scalars['Float']>;
   totalCount: Scalars['Int'];
 };
 
-export type CollectionJsonConnectionDistinctArgs = {
-  field: CollectionJsonFieldsEnum;
+export type CollectionConnectionDistinctArgs = {
+  field: CollectionFieldsEnum;
 };
 
-export type CollectionJsonConnectionGroupArgs = {
-  field: CollectionJsonFieldsEnum;
+export type CollectionConnectionGroupArgs = {
+  field: CollectionFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
-export type CollectionJsonConnectionMaxArgs = {
-  field: CollectionJsonFieldsEnum;
+export type CollectionConnectionMaxArgs = {
+  field: CollectionFieldsEnum;
 };
 
-export type CollectionJsonConnectionMinArgs = {
-  field: CollectionJsonFieldsEnum;
+export type CollectionConnectionMinArgs = {
+  field: CollectionFieldsEnum;
 };
 
-export type CollectionJsonConnectionSumArgs = {
-  field: CollectionJsonFieldsEnum;
+export type CollectionConnectionSumArgs = {
+  field: CollectionFieldsEnum;
 };
 
-export type CollectionJsonEdge = {
-  __typename?: 'CollectionJsonEdge';
-  next: Maybe<CollectionJson>;
-  node: CollectionJson;
-  previous: Maybe<CollectionJson>;
+export type CollectionEdge = {
+  __typename?: 'CollectionEdge';
+  next: Maybe<Collection>;
+  node: Collection;
+  previous: Maybe<Collection>;
 };
 
-export enum CollectionJsonFieldsEnum {
+export enum CollectionFieldsEnum {
   children = 'children',
   children___children = 'children___children',
   children___children___children = 'children___children___children',
@@ -137,6 +142,7 @@ export enum CollectionJsonFieldsEnum {
   children___parent___parent___children = 'children___parent___parent___children',
   children___parent___parent___id = 'children___parent___parent___id',
   description = 'description',
+  gatsbyPath = 'gatsbyPath',
   id = 'id',
   image___name = 'image___name',
   image___src___absolutePath = 'image___src___absolutePath',
@@ -150,21 +156,23 @@ export enum CollectionJsonFieldsEnum {
   image___src___blksize = 'image___src___blksize',
   image___src___blocks = 'image___src___blocks',
   image___src___changeTime = 'image___src___changeTime',
-  image___src___childCollectionJson___children = 'image___src___childCollectionJson___children',
-  image___src___childCollectionJson___description = 'image___src___childCollectionJson___description',
-  image___src___childCollectionJson___id = 'image___src___childCollectionJson___id',
-  image___src___childCollectionJson___jsonId = 'image___src___childCollectionJson___jsonId',
-  image___src___childCollectionJson___title = 'image___src___childCollectionJson___title',
+  image___src___childCollection___children = 'image___src___childCollection___children',
+  image___src___childCollection___description = 'image___src___childCollection___description',
+  image___src___childCollection___gatsbyPath = 'image___src___childCollection___gatsbyPath',
+  image___src___childCollection___id = 'image___src___childCollection___id',
+  image___src___childCollection___jsonId = 'image___src___childCollection___jsonId',
+  image___src___childCollection___title = 'image___src___childCollection___title',
   image___src___childImageSharp___children = 'image___src___childImageSharp___children',
   image___src___childImageSharp___gatsbyImageData = 'image___src___childImageSharp___gatsbyImageData',
   image___src___childImageSharp___id = 'image___src___childImageSharp___id',
   image___src___children = 'image___src___children',
-  image___src___childrenCollectionJson = 'image___src___childrenCollectionJson',
-  image___src___childrenCollectionJson___children = 'image___src___childrenCollectionJson___children',
-  image___src___childrenCollectionJson___description = 'image___src___childrenCollectionJson___description',
-  image___src___childrenCollectionJson___id = 'image___src___childrenCollectionJson___id',
-  image___src___childrenCollectionJson___jsonId = 'image___src___childrenCollectionJson___jsonId',
-  image___src___childrenCollectionJson___title = 'image___src___childrenCollectionJson___title',
+  image___src___childrenCollection = 'image___src___childrenCollection',
+  image___src___childrenCollection___children = 'image___src___childrenCollection___children',
+  image___src___childrenCollection___description = 'image___src___childrenCollection___description',
+  image___src___childrenCollection___gatsbyPath = 'image___src___childrenCollection___gatsbyPath',
+  image___src___childrenCollection___id = 'image___src___childrenCollection___id',
+  image___src___childrenCollection___jsonId = 'image___src___childrenCollection___jsonId',
+  image___src___childrenCollection___title = 'image___src___childrenCollection___title',
   image___src___childrenImageSharp = 'image___src___childrenImageSharp',
   image___src___childrenImageSharp___children = 'image___src___childrenImageSharp___children',
   image___src___childrenImageSharp___gatsbyImageData = 'image___src___childrenImageSharp___gatsbyImageData',
@@ -255,71 +263,72 @@ export enum CollectionJsonFieldsEnum {
   title = 'title',
 }
 
-export type CollectionJsonFilterInput = {
+export type CollectionFilterInput = {
   children: InputMaybe<NodeFilterListInput>;
   description: InputMaybe<StringQueryOperatorInput>;
+  gatsbyPath: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
-  image: InputMaybe<CollectionJsonImageFilterInput>;
+  image: InputMaybe<CollectionImageFilterInput>;
   internal: InputMaybe<InternalFilterInput>;
   jsonId: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
   title: InputMaybe<StringQueryOperatorInput>;
 };
 
-export type CollectionJsonFilterListInput = {
-  elemMatch: InputMaybe<CollectionJsonFilterInput>;
+export type CollectionFilterListInput = {
+  elemMatch: InputMaybe<CollectionFilterInput>;
 };
 
-export type CollectionJsonGroupConnection = {
-  __typename?: 'CollectionJsonGroupConnection';
+export type CollectionGroupConnection = {
+  __typename?: 'CollectionGroupConnection';
   distinct: Array<Scalars['String']>;
-  edges: Array<CollectionJsonEdge>;
+  edges: Array<CollectionEdge>;
   field: Scalars['String'];
   fieldValue: Maybe<Scalars['String']>;
-  group: Array<CollectionJsonGroupConnection>;
+  group: Array<CollectionGroupConnection>;
   max: Maybe<Scalars['Float']>;
   min: Maybe<Scalars['Float']>;
-  nodes: Array<CollectionJson>;
+  nodes: Array<Collection>;
   pageInfo: PageInfo;
   sum: Maybe<Scalars['Float']>;
   totalCount: Scalars['Int'];
 };
 
-export type CollectionJsonGroupConnectionDistinctArgs = {
-  field: CollectionJsonFieldsEnum;
+export type CollectionGroupConnectionDistinctArgs = {
+  field: CollectionFieldsEnum;
 };
 
-export type CollectionJsonGroupConnectionGroupArgs = {
-  field: CollectionJsonFieldsEnum;
+export type CollectionGroupConnectionGroupArgs = {
+  field: CollectionFieldsEnum;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
 };
 
-export type CollectionJsonGroupConnectionMaxArgs = {
-  field: CollectionJsonFieldsEnum;
+export type CollectionGroupConnectionMaxArgs = {
+  field: CollectionFieldsEnum;
 };
 
-export type CollectionJsonGroupConnectionMinArgs = {
-  field: CollectionJsonFieldsEnum;
+export type CollectionGroupConnectionMinArgs = {
+  field: CollectionFieldsEnum;
 };
 
-export type CollectionJsonGroupConnectionSumArgs = {
-  field: CollectionJsonFieldsEnum;
+export type CollectionGroupConnectionSumArgs = {
+  field: CollectionFieldsEnum;
 };
 
-export type CollectionJsonImage = {
-  __typename?: 'CollectionJsonImage';
+export type CollectionImage = {
+  __typename?: 'CollectionImage';
   name: Maybe<Scalars['String']>;
   src: Maybe<File>;
 };
 
-export type CollectionJsonImageFilterInput = {
+export type CollectionImageFilterInput = {
   name: InputMaybe<StringQueryOperatorInput>;
   src: InputMaybe<FileFilterInput>;
 };
 
-export type CollectionJsonSortInput = {
-  fields: InputMaybe<Array<InputMaybe<CollectionJsonFieldsEnum>>>;
+export type CollectionSortInput = {
+  fields: InputMaybe<Array<InputMaybe<CollectionFieldsEnum>>>;
   order: InputMaybe<Array<InputMaybe<SortOrderEnum>>>;
 };
 
@@ -687,13 +696,13 @@ export type File = Node & {
   blksize: Maybe<Scalars['Int']>;
   blocks: Maybe<Scalars['Int']>;
   changeTime: Scalars['Date'];
-  /** Returns the first child node of type CollectionJson or null if there are no children of given type on this node */
-  childCollectionJson: Maybe<CollectionJson>;
+  /** Returns the first child node of type Collection or null if there are no children of given type on this node */
+  childCollection: Maybe<Collection>;
   /** Returns the first child node of type ImageSharp or null if there are no children of given type on this node */
   childImageSharp: Maybe<ImageSharp>;
   children: Array<Node>;
-  /** Returns all children nodes filtered by type CollectionJson */
-  childrenCollectionJson: Maybe<Array<Maybe<CollectionJson>>>;
+  /** Returns all children nodes filtered by type Collection */
+  childrenCollection: Maybe<Array<Maybe<Collection>>>;
   /** Returns all children nodes filtered by type ImageSharp */
   childrenImageSharp: Maybe<Array<Maybe<ImageSharp>>>;
   ctime: Scalars['Date'];
@@ -828,86 +837,87 @@ export enum FileFieldsEnum {
   blksize = 'blksize',
   blocks = 'blocks',
   changeTime = 'changeTime',
-  childCollectionJson___children = 'childCollectionJson___children',
-  childCollectionJson___children___children = 'childCollectionJson___children___children',
-  childCollectionJson___children___children___children = 'childCollectionJson___children___children___children',
-  childCollectionJson___children___children___id = 'childCollectionJson___children___children___id',
-  childCollectionJson___children___id = 'childCollectionJson___children___id',
-  childCollectionJson___children___internal___content = 'childCollectionJson___children___internal___content',
-  childCollectionJson___children___internal___contentDigest = 'childCollectionJson___children___internal___contentDigest',
-  childCollectionJson___children___internal___description = 'childCollectionJson___children___internal___description',
-  childCollectionJson___children___internal___fieldOwners = 'childCollectionJson___children___internal___fieldOwners',
-  childCollectionJson___children___internal___ignoreType = 'childCollectionJson___children___internal___ignoreType',
-  childCollectionJson___children___internal___mediaType = 'childCollectionJson___children___internal___mediaType',
-  childCollectionJson___children___internal___owner = 'childCollectionJson___children___internal___owner',
-  childCollectionJson___children___internal___type = 'childCollectionJson___children___internal___type',
-  childCollectionJson___children___parent___children = 'childCollectionJson___children___parent___children',
-  childCollectionJson___children___parent___id = 'childCollectionJson___children___parent___id',
-  childCollectionJson___description = 'childCollectionJson___description',
-  childCollectionJson___id = 'childCollectionJson___id',
-  childCollectionJson___image___name = 'childCollectionJson___image___name',
-  childCollectionJson___image___src___absolutePath = 'childCollectionJson___image___src___absolutePath',
-  childCollectionJson___image___src___accessTime = 'childCollectionJson___image___src___accessTime',
-  childCollectionJson___image___src___atime = 'childCollectionJson___image___src___atime',
-  childCollectionJson___image___src___atimeMs = 'childCollectionJson___image___src___atimeMs',
-  childCollectionJson___image___src___base = 'childCollectionJson___image___src___base',
-  childCollectionJson___image___src___birthTime = 'childCollectionJson___image___src___birthTime',
-  childCollectionJson___image___src___birthtime = 'childCollectionJson___image___src___birthtime',
-  childCollectionJson___image___src___birthtimeMs = 'childCollectionJson___image___src___birthtimeMs',
-  childCollectionJson___image___src___blksize = 'childCollectionJson___image___src___blksize',
-  childCollectionJson___image___src___blocks = 'childCollectionJson___image___src___blocks',
-  childCollectionJson___image___src___changeTime = 'childCollectionJson___image___src___changeTime',
-  childCollectionJson___image___src___children = 'childCollectionJson___image___src___children',
-  childCollectionJson___image___src___childrenCollectionJson = 'childCollectionJson___image___src___childrenCollectionJson',
-  childCollectionJson___image___src___childrenImageSharp = 'childCollectionJson___image___src___childrenImageSharp',
-  childCollectionJson___image___src___ctime = 'childCollectionJson___image___src___ctime',
-  childCollectionJson___image___src___ctimeMs = 'childCollectionJson___image___src___ctimeMs',
-  childCollectionJson___image___src___dev = 'childCollectionJson___image___src___dev',
-  childCollectionJson___image___src___dir = 'childCollectionJson___image___src___dir',
-  childCollectionJson___image___src___ext = 'childCollectionJson___image___src___ext',
-  childCollectionJson___image___src___extension = 'childCollectionJson___image___src___extension',
-  childCollectionJson___image___src___gid = 'childCollectionJson___image___src___gid',
-  childCollectionJson___image___src___id = 'childCollectionJson___image___src___id',
-  childCollectionJson___image___src___ino = 'childCollectionJson___image___src___ino',
-  childCollectionJson___image___src___mode = 'childCollectionJson___image___src___mode',
-  childCollectionJson___image___src___modifiedTime = 'childCollectionJson___image___src___modifiedTime',
-  childCollectionJson___image___src___mtime = 'childCollectionJson___image___src___mtime',
-  childCollectionJson___image___src___mtimeMs = 'childCollectionJson___image___src___mtimeMs',
-  childCollectionJson___image___src___name = 'childCollectionJson___image___src___name',
-  childCollectionJson___image___src___nlink = 'childCollectionJson___image___src___nlink',
-  childCollectionJson___image___src___prettySize = 'childCollectionJson___image___src___prettySize',
-  childCollectionJson___image___src___publicURL = 'childCollectionJson___image___src___publicURL',
-  childCollectionJson___image___src___rdev = 'childCollectionJson___image___src___rdev',
-  childCollectionJson___image___src___relativeDirectory = 'childCollectionJson___image___src___relativeDirectory',
-  childCollectionJson___image___src___relativePath = 'childCollectionJson___image___src___relativePath',
-  childCollectionJson___image___src___root = 'childCollectionJson___image___src___root',
-  childCollectionJson___image___src___size = 'childCollectionJson___image___src___size',
-  childCollectionJson___image___src___sourceInstanceName = 'childCollectionJson___image___src___sourceInstanceName',
-  childCollectionJson___image___src___uid = 'childCollectionJson___image___src___uid',
-  childCollectionJson___internal___content = 'childCollectionJson___internal___content',
-  childCollectionJson___internal___contentDigest = 'childCollectionJson___internal___contentDigest',
-  childCollectionJson___internal___description = 'childCollectionJson___internal___description',
-  childCollectionJson___internal___fieldOwners = 'childCollectionJson___internal___fieldOwners',
-  childCollectionJson___internal___ignoreType = 'childCollectionJson___internal___ignoreType',
-  childCollectionJson___internal___mediaType = 'childCollectionJson___internal___mediaType',
-  childCollectionJson___internal___owner = 'childCollectionJson___internal___owner',
-  childCollectionJson___internal___type = 'childCollectionJson___internal___type',
-  childCollectionJson___jsonId = 'childCollectionJson___jsonId',
-  childCollectionJson___parent___children = 'childCollectionJson___parent___children',
-  childCollectionJson___parent___children___children = 'childCollectionJson___parent___children___children',
-  childCollectionJson___parent___children___id = 'childCollectionJson___parent___children___id',
-  childCollectionJson___parent___id = 'childCollectionJson___parent___id',
-  childCollectionJson___parent___internal___content = 'childCollectionJson___parent___internal___content',
-  childCollectionJson___parent___internal___contentDigest = 'childCollectionJson___parent___internal___contentDigest',
-  childCollectionJson___parent___internal___description = 'childCollectionJson___parent___internal___description',
-  childCollectionJson___parent___internal___fieldOwners = 'childCollectionJson___parent___internal___fieldOwners',
-  childCollectionJson___parent___internal___ignoreType = 'childCollectionJson___parent___internal___ignoreType',
-  childCollectionJson___parent___internal___mediaType = 'childCollectionJson___parent___internal___mediaType',
-  childCollectionJson___parent___internal___owner = 'childCollectionJson___parent___internal___owner',
-  childCollectionJson___parent___internal___type = 'childCollectionJson___parent___internal___type',
-  childCollectionJson___parent___parent___children = 'childCollectionJson___parent___parent___children',
-  childCollectionJson___parent___parent___id = 'childCollectionJson___parent___parent___id',
-  childCollectionJson___title = 'childCollectionJson___title',
+  childCollection___children = 'childCollection___children',
+  childCollection___children___children = 'childCollection___children___children',
+  childCollection___children___children___children = 'childCollection___children___children___children',
+  childCollection___children___children___id = 'childCollection___children___children___id',
+  childCollection___children___id = 'childCollection___children___id',
+  childCollection___children___internal___content = 'childCollection___children___internal___content',
+  childCollection___children___internal___contentDigest = 'childCollection___children___internal___contentDigest',
+  childCollection___children___internal___description = 'childCollection___children___internal___description',
+  childCollection___children___internal___fieldOwners = 'childCollection___children___internal___fieldOwners',
+  childCollection___children___internal___ignoreType = 'childCollection___children___internal___ignoreType',
+  childCollection___children___internal___mediaType = 'childCollection___children___internal___mediaType',
+  childCollection___children___internal___owner = 'childCollection___children___internal___owner',
+  childCollection___children___internal___type = 'childCollection___children___internal___type',
+  childCollection___children___parent___children = 'childCollection___children___parent___children',
+  childCollection___children___parent___id = 'childCollection___children___parent___id',
+  childCollection___description = 'childCollection___description',
+  childCollection___gatsbyPath = 'childCollection___gatsbyPath',
+  childCollection___id = 'childCollection___id',
+  childCollection___image___name = 'childCollection___image___name',
+  childCollection___image___src___absolutePath = 'childCollection___image___src___absolutePath',
+  childCollection___image___src___accessTime = 'childCollection___image___src___accessTime',
+  childCollection___image___src___atime = 'childCollection___image___src___atime',
+  childCollection___image___src___atimeMs = 'childCollection___image___src___atimeMs',
+  childCollection___image___src___base = 'childCollection___image___src___base',
+  childCollection___image___src___birthTime = 'childCollection___image___src___birthTime',
+  childCollection___image___src___birthtime = 'childCollection___image___src___birthtime',
+  childCollection___image___src___birthtimeMs = 'childCollection___image___src___birthtimeMs',
+  childCollection___image___src___blksize = 'childCollection___image___src___blksize',
+  childCollection___image___src___blocks = 'childCollection___image___src___blocks',
+  childCollection___image___src___changeTime = 'childCollection___image___src___changeTime',
+  childCollection___image___src___children = 'childCollection___image___src___children',
+  childCollection___image___src___childrenCollection = 'childCollection___image___src___childrenCollection',
+  childCollection___image___src___childrenImageSharp = 'childCollection___image___src___childrenImageSharp',
+  childCollection___image___src___ctime = 'childCollection___image___src___ctime',
+  childCollection___image___src___ctimeMs = 'childCollection___image___src___ctimeMs',
+  childCollection___image___src___dev = 'childCollection___image___src___dev',
+  childCollection___image___src___dir = 'childCollection___image___src___dir',
+  childCollection___image___src___ext = 'childCollection___image___src___ext',
+  childCollection___image___src___extension = 'childCollection___image___src___extension',
+  childCollection___image___src___gid = 'childCollection___image___src___gid',
+  childCollection___image___src___id = 'childCollection___image___src___id',
+  childCollection___image___src___ino = 'childCollection___image___src___ino',
+  childCollection___image___src___mode = 'childCollection___image___src___mode',
+  childCollection___image___src___modifiedTime = 'childCollection___image___src___modifiedTime',
+  childCollection___image___src___mtime = 'childCollection___image___src___mtime',
+  childCollection___image___src___mtimeMs = 'childCollection___image___src___mtimeMs',
+  childCollection___image___src___name = 'childCollection___image___src___name',
+  childCollection___image___src___nlink = 'childCollection___image___src___nlink',
+  childCollection___image___src___prettySize = 'childCollection___image___src___prettySize',
+  childCollection___image___src___publicURL = 'childCollection___image___src___publicURL',
+  childCollection___image___src___rdev = 'childCollection___image___src___rdev',
+  childCollection___image___src___relativeDirectory = 'childCollection___image___src___relativeDirectory',
+  childCollection___image___src___relativePath = 'childCollection___image___src___relativePath',
+  childCollection___image___src___root = 'childCollection___image___src___root',
+  childCollection___image___src___size = 'childCollection___image___src___size',
+  childCollection___image___src___sourceInstanceName = 'childCollection___image___src___sourceInstanceName',
+  childCollection___image___src___uid = 'childCollection___image___src___uid',
+  childCollection___internal___content = 'childCollection___internal___content',
+  childCollection___internal___contentDigest = 'childCollection___internal___contentDigest',
+  childCollection___internal___description = 'childCollection___internal___description',
+  childCollection___internal___fieldOwners = 'childCollection___internal___fieldOwners',
+  childCollection___internal___ignoreType = 'childCollection___internal___ignoreType',
+  childCollection___internal___mediaType = 'childCollection___internal___mediaType',
+  childCollection___internal___owner = 'childCollection___internal___owner',
+  childCollection___internal___type = 'childCollection___internal___type',
+  childCollection___jsonId = 'childCollection___jsonId',
+  childCollection___parent___children = 'childCollection___parent___children',
+  childCollection___parent___children___children = 'childCollection___parent___children___children',
+  childCollection___parent___children___id = 'childCollection___parent___children___id',
+  childCollection___parent___id = 'childCollection___parent___id',
+  childCollection___parent___internal___content = 'childCollection___parent___internal___content',
+  childCollection___parent___internal___contentDigest = 'childCollection___parent___internal___contentDigest',
+  childCollection___parent___internal___description = 'childCollection___parent___internal___description',
+  childCollection___parent___internal___fieldOwners = 'childCollection___parent___internal___fieldOwners',
+  childCollection___parent___internal___ignoreType = 'childCollection___parent___internal___ignoreType',
+  childCollection___parent___internal___mediaType = 'childCollection___parent___internal___mediaType',
+  childCollection___parent___internal___owner = 'childCollection___parent___internal___owner',
+  childCollection___parent___internal___type = 'childCollection___parent___internal___type',
+  childCollection___parent___parent___children = 'childCollection___parent___parent___children',
+  childCollection___parent___parent___id = 'childCollection___parent___parent___id',
+  childCollection___title = 'childCollection___title',
   childImageSharp___children = 'childImageSharp___children',
   childImageSharp___children___children = 'childImageSharp___children___children',
   childImageSharp___children___children___children = 'childImageSharp___children___children___children',
@@ -979,87 +989,88 @@ export enum FileFieldsEnum {
   childImageSharp___resize___tracedSVG = 'childImageSharp___resize___tracedSVG',
   childImageSharp___resize___width = 'childImageSharp___resize___width',
   children = 'children',
-  childrenCollectionJson = 'childrenCollectionJson',
-  childrenCollectionJson___children = 'childrenCollectionJson___children',
-  childrenCollectionJson___children___children = 'childrenCollectionJson___children___children',
-  childrenCollectionJson___children___children___children = 'childrenCollectionJson___children___children___children',
-  childrenCollectionJson___children___children___id = 'childrenCollectionJson___children___children___id',
-  childrenCollectionJson___children___id = 'childrenCollectionJson___children___id',
-  childrenCollectionJson___children___internal___content = 'childrenCollectionJson___children___internal___content',
-  childrenCollectionJson___children___internal___contentDigest = 'childrenCollectionJson___children___internal___contentDigest',
-  childrenCollectionJson___children___internal___description = 'childrenCollectionJson___children___internal___description',
-  childrenCollectionJson___children___internal___fieldOwners = 'childrenCollectionJson___children___internal___fieldOwners',
-  childrenCollectionJson___children___internal___ignoreType = 'childrenCollectionJson___children___internal___ignoreType',
-  childrenCollectionJson___children___internal___mediaType = 'childrenCollectionJson___children___internal___mediaType',
-  childrenCollectionJson___children___internal___owner = 'childrenCollectionJson___children___internal___owner',
-  childrenCollectionJson___children___internal___type = 'childrenCollectionJson___children___internal___type',
-  childrenCollectionJson___children___parent___children = 'childrenCollectionJson___children___parent___children',
-  childrenCollectionJson___children___parent___id = 'childrenCollectionJson___children___parent___id',
-  childrenCollectionJson___description = 'childrenCollectionJson___description',
-  childrenCollectionJson___id = 'childrenCollectionJson___id',
-  childrenCollectionJson___image___name = 'childrenCollectionJson___image___name',
-  childrenCollectionJson___image___src___absolutePath = 'childrenCollectionJson___image___src___absolutePath',
-  childrenCollectionJson___image___src___accessTime = 'childrenCollectionJson___image___src___accessTime',
-  childrenCollectionJson___image___src___atime = 'childrenCollectionJson___image___src___atime',
-  childrenCollectionJson___image___src___atimeMs = 'childrenCollectionJson___image___src___atimeMs',
-  childrenCollectionJson___image___src___base = 'childrenCollectionJson___image___src___base',
-  childrenCollectionJson___image___src___birthTime = 'childrenCollectionJson___image___src___birthTime',
-  childrenCollectionJson___image___src___birthtime = 'childrenCollectionJson___image___src___birthtime',
-  childrenCollectionJson___image___src___birthtimeMs = 'childrenCollectionJson___image___src___birthtimeMs',
-  childrenCollectionJson___image___src___blksize = 'childrenCollectionJson___image___src___blksize',
-  childrenCollectionJson___image___src___blocks = 'childrenCollectionJson___image___src___blocks',
-  childrenCollectionJson___image___src___changeTime = 'childrenCollectionJson___image___src___changeTime',
-  childrenCollectionJson___image___src___children = 'childrenCollectionJson___image___src___children',
-  childrenCollectionJson___image___src___childrenCollectionJson = 'childrenCollectionJson___image___src___childrenCollectionJson',
-  childrenCollectionJson___image___src___childrenImageSharp = 'childrenCollectionJson___image___src___childrenImageSharp',
-  childrenCollectionJson___image___src___ctime = 'childrenCollectionJson___image___src___ctime',
-  childrenCollectionJson___image___src___ctimeMs = 'childrenCollectionJson___image___src___ctimeMs',
-  childrenCollectionJson___image___src___dev = 'childrenCollectionJson___image___src___dev',
-  childrenCollectionJson___image___src___dir = 'childrenCollectionJson___image___src___dir',
-  childrenCollectionJson___image___src___ext = 'childrenCollectionJson___image___src___ext',
-  childrenCollectionJson___image___src___extension = 'childrenCollectionJson___image___src___extension',
-  childrenCollectionJson___image___src___gid = 'childrenCollectionJson___image___src___gid',
-  childrenCollectionJson___image___src___id = 'childrenCollectionJson___image___src___id',
-  childrenCollectionJson___image___src___ino = 'childrenCollectionJson___image___src___ino',
-  childrenCollectionJson___image___src___mode = 'childrenCollectionJson___image___src___mode',
-  childrenCollectionJson___image___src___modifiedTime = 'childrenCollectionJson___image___src___modifiedTime',
-  childrenCollectionJson___image___src___mtime = 'childrenCollectionJson___image___src___mtime',
-  childrenCollectionJson___image___src___mtimeMs = 'childrenCollectionJson___image___src___mtimeMs',
-  childrenCollectionJson___image___src___name = 'childrenCollectionJson___image___src___name',
-  childrenCollectionJson___image___src___nlink = 'childrenCollectionJson___image___src___nlink',
-  childrenCollectionJson___image___src___prettySize = 'childrenCollectionJson___image___src___prettySize',
-  childrenCollectionJson___image___src___publicURL = 'childrenCollectionJson___image___src___publicURL',
-  childrenCollectionJson___image___src___rdev = 'childrenCollectionJson___image___src___rdev',
-  childrenCollectionJson___image___src___relativeDirectory = 'childrenCollectionJson___image___src___relativeDirectory',
-  childrenCollectionJson___image___src___relativePath = 'childrenCollectionJson___image___src___relativePath',
-  childrenCollectionJson___image___src___root = 'childrenCollectionJson___image___src___root',
-  childrenCollectionJson___image___src___size = 'childrenCollectionJson___image___src___size',
-  childrenCollectionJson___image___src___sourceInstanceName = 'childrenCollectionJson___image___src___sourceInstanceName',
-  childrenCollectionJson___image___src___uid = 'childrenCollectionJson___image___src___uid',
-  childrenCollectionJson___internal___content = 'childrenCollectionJson___internal___content',
-  childrenCollectionJson___internal___contentDigest = 'childrenCollectionJson___internal___contentDigest',
-  childrenCollectionJson___internal___description = 'childrenCollectionJson___internal___description',
-  childrenCollectionJson___internal___fieldOwners = 'childrenCollectionJson___internal___fieldOwners',
-  childrenCollectionJson___internal___ignoreType = 'childrenCollectionJson___internal___ignoreType',
-  childrenCollectionJson___internal___mediaType = 'childrenCollectionJson___internal___mediaType',
-  childrenCollectionJson___internal___owner = 'childrenCollectionJson___internal___owner',
-  childrenCollectionJson___internal___type = 'childrenCollectionJson___internal___type',
-  childrenCollectionJson___jsonId = 'childrenCollectionJson___jsonId',
-  childrenCollectionJson___parent___children = 'childrenCollectionJson___parent___children',
-  childrenCollectionJson___parent___children___children = 'childrenCollectionJson___parent___children___children',
-  childrenCollectionJson___parent___children___id = 'childrenCollectionJson___parent___children___id',
-  childrenCollectionJson___parent___id = 'childrenCollectionJson___parent___id',
-  childrenCollectionJson___parent___internal___content = 'childrenCollectionJson___parent___internal___content',
-  childrenCollectionJson___parent___internal___contentDigest = 'childrenCollectionJson___parent___internal___contentDigest',
-  childrenCollectionJson___parent___internal___description = 'childrenCollectionJson___parent___internal___description',
-  childrenCollectionJson___parent___internal___fieldOwners = 'childrenCollectionJson___parent___internal___fieldOwners',
-  childrenCollectionJson___parent___internal___ignoreType = 'childrenCollectionJson___parent___internal___ignoreType',
-  childrenCollectionJson___parent___internal___mediaType = 'childrenCollectionJson___parent___internal___mediaType',
-  childrenCollectionJson___parent___internal___owner = 'childrenCollectionJson___parent___internal___owner',
-  childrenCollectionJson___parent___internal___type = 'childrenCollectionJson___parent___internal___type',
-  childrenCollectionJson___parent___parent___children = 'childrenCollectionJson___parent___parent___children',
-  childrenCollectionJson___parent___parent___id = 'childrenCollectionJson___parent___parent___id',
-  childrenCollectionJson___title = 'childrenCollectionJson___title',
+  childrenCollection = 'childrenCollection',
+  childrenCollection___children = 'childrenCollection___children',
+  childrenCollection___children___children = 'childrenCollection___children___children',
+  childrenCollection___children___children___children = 'childrenCollection___children___children___children',
+  childrenCollection___children___children___id = 'childrenCollection___children___children___id',
+  childrenCollection___children___id = 'childrenCollection___children___id',
+  childrenCollection___children___internal___content = 'childrenCollection___children___internal___content',
+  childrenCollection___children___internal___contentDigest = 'childrenCollection___children___internal___contentDigest',
+  childrenCollection___children___internal___description = 'childrenCollection___children___internal___description',
+  childrenCollection___children___internal___fieldOwners = 'childrenCollection___children___internal___fieldOwners',
+  childrenCollection___children___internal___ignoreType = 'childrenCollection___children___internal___ignoreType',
+  childrenCollection___children___internal___mediaType = 'childrenCollection___children___internal___mediaType',
+  childrenCollection___children___internal___owner = 'childrenCollection___children___internal___owner',
+  childrenCollection___children___internal___type = 'childrenCollection___children___internal___type',
+  childrenCollection___children___parent___children = 'childrenCollection___children___parent___children',
+  childrenCollection___children___parent___id = 'childrenCollection___children___parent___id',
+  childrenCollection___description = 'childrenCollection___description',
+  childrenCollection___gatsbyPath = 'childrenCollection___gatsbyPath',
+  childrenCollection___id = 'childrenCollection___id',
+  childrenCollection___image___name = 'childrenCollection___image___name',
+  childrenCollection___image___src___absolutePath = 'childrenCollection___image___src___absolutePath',
+  childrenCollection___image___src___accessTime = 'childrenCollection___image___src___accessTime',
+  childrenCollection___image___src___atime = 'childrenCollection___image___src___atime',
+  childrenCollection___image___src___atimeMs = 'childrenCollection___image___src___atimeMs',
+  childrenCollection___image___src___base = 'childrenCollection___image___src___base',
+  childrenCollection___image___src___birthTime = 'childrenCollection___image___src___birthTime',
+  childrenCollection___image___src___birthtime = 'childrenCollection___image___src___birthtime',
+  childrenCollection___image___src___birthtimeMs = 'childrenCollection___image___src___birthtimeMs',
+  childrenCollection___image___src___blksize = 'childrenCollection___image___src___blksize',
+  childrenCollection___image___src___blocks = 'childrenCollection___image___src___blocks',
+  childrenCollection___image___src___changeTime = 'childrenCollection___image___src___changeTime',
+  childrenCollection___image___src___children = 'childrenCollection___image___src___children',
+  childrenCollection___image___src___childrenCollection = 'childrenCollection___image___src___childrenCollection',
+  childrenCollection___image___src___childrenImageSharp = 'childrenCollection___image___src___childrenImageSharp',
+  childrenCollection___image___src___ctime = 'childrenCollection___image___src___ctime',
+  childrenCollection___image___src___ctimeMs = 'childrenCollection___image___src___ctimeMs',
+  childrenCollection___image___src___dev = 'childrenCollection___image___src___dev',
+  childrenCollection___image___src___dir = 'childrenCollection___image___src___dir',
+  childrenCollection___image___src___ext = 'childrenCollection___image___src___ext',
+  childrenCollection___image___src___extension = 'childrenCollection___image___src___extension',
+  childrenCollection___image___src___gid = 'childrenCollection___image___src___gid',
+  childrenCollection___image___src___id = 'childrenCollection___image___src___id',
+  childrenCollection___image___src___ino = 'childrenCollection___image___src___ino',
+  childrenCollection___image___src___mode = 'childrenCollection___image___src___mode',
+  childrenCollection___image___src___modifiedTime = 'childrenCollection___image___src___modifiedTime',
+  childrenCollection___image___src___mtime = 'childrenCollection___image___src___mtime',
+  childrenCollection___image___src___mtimeMs = 'childrenCollection___image___src___mtimeMs',
+  childrenCollection___image___src___name = 'childrenCollection___image___src___name',
+  childrenCollection___image___src___nlink = 'childrenCollection___image___src___nlink',
+  childrenCollection___image___src___prettySize = 'childrenCollection___image___src___prettySize',
+  childrenCollection___image___src___publicURL = 'childrenCollection___image___src___publicURL',
+  childrenCollection___image___src___rdev = 'childrenCollection___image___src___rdev',
+  childrenCollection___image___src___relativeDirectory = 'childrenCollection___image___src___relativeDirectory',
+  childrenCollection___image___src___relativePath = 'childrenCollection___image___src___relativePath',
+  childrenCollection___image___src___root = 'childrenCollection___image___src___root',
+  childrenCollection___image___src___size = 'childrenCollection___image___src___size',
+  childrenCollection___image___src___sourceInstanceName = 'childrenCollection___image___src___sourceInstanceName',
+  childrenCollection___image___src___uid = 'childrenCollection___image___src___uid',
+  childrenCollection___internal___content = 'childrenCollection___internal___content',
+  childrenCollection___internal___contentDigest = 'childrenCollection___internal___contentDigest',
+  childrenCollection___internal___description = 'childrenCollection___internal___description',
+  childrenCollection___internal___fieldOwners = 'childrenCollection___internal___fieldOwners',
+  childrenCollection___internal___ignoreType = 'childrenCollection___internal___ignoreType',
+  childrenCollection___internal___mediaType = 'childrenCollection___internal___mediaType',
+  childrenCollection___internal___owner = 'childrenCollection___internal___owner',
+  childrenCollection___internal___type = 'childrenCollection___internal___type',
+  childrenCollection___jsonId = 'childrenCollection___jsonId',
+  childrenCollection___parent___children = 'childrenCollection___parent___children',
+  childrenCollection___parent___children___children = 'childrenCollection___parent___children___children',
+  childrenCollection___parent___children___id = 'childrenCollection___parent___children___id',
+  childrenCollection___parent___id = 'childrenCollection___parent___id',
+  childrenCollection___parent___internal___content = 'childrenCollection___parent___internal___content',
+  childrenCollection___parent___internal___contentDigest = 'childrenCollection___parent___internal___contentDigest',
+  childrenCollection___parent___internal___description = 'childrenCollection___parent___internal___description',
+  childrenCollection___parent___internal___fieldOwners = 'childrenCollection___parent___internal___fieldOwners',
+  childrenCollection___parent___internal___ignoreType = 'childrenCollection___parent___internal___ignoreType',
+  childrenCollection___parent___internal___mediaType = 'childrenCollection___parent___internal___mediaType',
+  childrenCollection___parent___internal___owner = 'childrenCollection___parent___internal___owner',
+  childrenCollection___parent___internal___type = 'childrenCollection___parent___internal___type',
+  childrenCollection___parent___parent___children = 'childrenCollection___parent___parent___children',
+  childrenCollection___parent___parent___id = 'childrenCollection___parent___parent___id',
+  childrenCollection___title = 'childrenCollection___title',
   childrenImageSharp = 'childrenImageSharp',
   childrenImageSharp___children = 'childrenImageSharp___children',
   childrenImageSharp___children___children = 'childrenImageSharp___children___children',
@@ -1253,10 +1264,10 @@ export type FileFilterInput = {
   blksize: InputMaybe<IntQueryOperatorInput>;
   blocks: InputMaybe<IntQueryOperatorInput>;
   changeTime: InputMaybe<DateQueryOperatorInput>;
-  childCollectionJson: InputMaybe<CollectionJsonFilterInput>;
+  childCollection: InputMaybe<CollectionFilterInput>;
   childImageSharp: InputMaybe<ImageSharpFilterInput>;
   children: InputMaybe<NodeFilterListInput>;
-  childrenCollectionJson: InputMaybe<CollectionJsonFilterListInput>;
+  childrenCollection: InputMaybe<CollectionFilterListInput>;
   childrenImageSharp: InputMaybe<ImageSharpFilterListInput>;
   ctime: InputMaybe<DateQueryOperatorInput>;
   ctimeMs: InputMaybe<FloatQueryOperatorInput>;
@@ -1924,7 +1935,7 @@ export enum PotraceTurnPolicy {
 
 export type Query = {
   __typename?: 'Query';
-  allCollectionJson: CollectionJsonConnection;
+  allCollection: CollectionConnection;
   allDirectory: DirectoryConnection;
   allFile: FileConnection;
   allImageSharp: ImageSharpConnection;
@@ -1933,7 +1944,7 @@ export type Query = {
   allSiteFunction: SiteFunctionConnection;
   allSitePage: SitePageConnection;
   allSitePlugin: SitePluginConnection;
-  collectionJson: Maybe<CollectionJson>;
+  collection: Maybe<Collection>;
   directory: Maybe<Directory>;
   file: Maybe<File>;
   imageSharp: Maybe<ImageSharp>;
@@ -1944,11 +1955,11 @@ export type Query = {
   sitePlugin: Maybe<SitePlugin>;
 };
 
-export type QueryAllCollectionJsonArgs = {
-  filter: InputMaybe<CollectionJsonFilterInput>;
+export type QueryAllCollectionArgs = {
+  filter: InputMaybe<CollectionFilterInput>;
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
-  sort: InputMaybe<CollectionJsonSortInput>;
+  sort: InputMaybe<CollectionSortInput>;
 };
 
 export type QueryAllDirectoryArgs = {
@@ -2007,11 +2018,12 @@ export type QueryAllSitePluginArgs = {
   sort: InputMaybe<SitePluginSortInput>;
 };
 
-export type QueryCollectionJsonArgs = {
+export type QueryCollectionArgs = {
   children: InputMaybe<NodeFilterListInput>;
   description: InputMaybe<StringQueryOperatorInput>;
+  gatsbyPath: InputMaybe<StringQueryOperatorInput>;
   id: InputMaybe<StringQueryOperatorInput>;
-  image: InputMaybe<CollectionJsonImageFilterInput>;
+  image: InputMaybe<CollectionImageFilterInput>;
   internal: InputMaybe<InternalFilterInput>;
   jsonId: InputMaybe<StringQueryOperatorInput>;
   parent: InputMaybe<NodeFilterInput>;
@@ -2068,10 +2080,10 @@ export type QueryFileArgs = {
   blksize: InputMaybe<IntQueryOperatorInput>;
   blocks: InputMaybe<IntQueryOperatorInput>;
   changeTime: InputMaybe<DateQueryOperatorInput>;
-  childCollectionJson: InputMaybe<CollectionJsonFilterInput>;
+  childCollection: InputMaybe<CollectionFilterInput>;
   childImageSharp: InputMaybe<ImageSharpFilterInput>;
   children: InputMaybe<NodeFilterListInput>;
-  childrenCollectionJson: InputMaybe<CollectionJsonFilterListInput>;
+  childrenCollection: InputMaybe<CollectionFilterListInput>;
   childrenImageSharp: InputMaybe<ImageSharpFilterListInput>;
   ctime: InputMaybe<DateQueryOperatorInput>;
   ctimeMs: InputMaybe<FloatQueryOperatorInput>;
@@ -3437,18 +3449,61 @@ export type GatsbyImageSharpFluid_WithWebp_NoBase64Fragment = {
   sizes: string;
 };
 
+export type CollectionFullQueryVariables = Exact<{ [key: string]: never }>;
+
+export type CollectionFullQuery = {
+  __typename?: 'Query';
+  allCollection: {
+    __typename?: 'CollectionConnection';
+    nodes: Array<{
+      __typename?: 'Collection';
+      jsonId: string;
+      title: string;
+      image: {
+        __typename?: 'CollectionImage';
+        name: string;
+        src: {
+          __typename?: 'File';
+          childImageSharp: { __typename?: 'ImageSharp'; gatsbyImageData: any };
+        };
+      };
+    }>;
+  };
+};
+
+export type ItemQueryVariables = Exact<{
+  jsonId: InputMaybe<Scalars['String']>;
+}>;
+
+export type ItemQuery = {
+  __typename?: 'Query';
+  collection: {
+    __typename?: 'Collection';
+    title: string;
+    description: string;
+    image: {
+      __typename?: 'CollectionImage';
+      name: string;
+      src: {
+        __typename?: 'File';
+        childImageSharp: { __typename?: 'ImageSharp'; gatsbyImageData: any };
+      };
+    };
+  };
+};
+
 export type CollectionQueryVariables = Exact<{ [key: string]: never }>;
 
 export type CollectionQuery = {
   __typename?: 'Query';
-  allCollectionJson: {
-    __typename?: 'CollectionJsonConnection';
+  allCollection: {
+    __typename?: 'CollectionConnection';
     nodes: Array<{
-      __typename?: 'CollectionJson';
+      __typename?: 'Collection';
       jsonId: string;
       title: string;
       image: {
-        __typename?: 'CollectionJsonImage';
+        __typename?: 'CollectionImage';
         name: string;
         src: {
           __typename?: 'File';
