@@ -13,7 +13,7 @@ const Home: React.FC<IndexPageProps> = ({ data }) => {
   } = data;
 
   return (
-    <Layout>
+    <Layout title="Home">
       <h2>Collection</h2>
       <Link to="/collection">See all</Link>
       <ul className={styles.list}>

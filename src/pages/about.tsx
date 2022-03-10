@@ -1,10 +1,17 @@
 import React from 'react';
 
 import Layout from 'src/components/layout';
+import Breadcrumbs from 'src/components/breadcrumbs';
 
-const About: React.FC = () => {
+type Props = {
+  uri: string;
+};
+
+const About: React.FC<Props> = ({ uri }) => {
   return (
-    <Layout>
+    <Layout title="About">
+      <Breadcrumbs currentUri={uri} />
+
       <h2>Heading</h2>
       <p>
         Sed ut perspiciatis unde omnis iste natus error sit voluptatem

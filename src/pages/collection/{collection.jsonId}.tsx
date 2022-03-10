@@ -9,21 +9,23 @@ import {
 
 import Layout from 'src/components/layout';
 import { ItemPageProps } from 'src/types/itemPage';
+import Breadcrumbs from 'src/components/breadcrumbs';
 
-const ItemPage: React.FC<ItemPageProps> = (props) => {
+const ItemPage: React.FC<ItemPageProps> = ({ data, uri }) => {
   const {
     collection: {
       title,
       description,
       image: { name, src },
     },
-  } = props.data;
+  } = data;
 
   const imageSrc = src as ImageDataLike;
   const imageData = getImage(imageSrc) as IGatsbyImageData;
 
   return (
-    <Layout>
+    <Layout title={`Product - ${title}`}>
+      <Breadcrumbs currentUri={uri} customName={title} />
       <section>
         <h3>{title}</h3>
         {imageSrc && <GatsbyImage image={imageData} alt={name} />}

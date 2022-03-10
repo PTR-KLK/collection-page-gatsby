@@ -2,10 +2,19 @@ import React from 'react';
 import { Link } from 'gatsby';
 
 import * as styles from '../styles/layout.module.scss';
+import { Helmet } from 'react-helmet';
 
-const Layout: React.FC = ({ children }) => {
+type Props = {
+  title?: string;
+};
+
+const Layout: React.FC<Props> = ({ children, title }) => {
   return (
     <main>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{title}</title>
+      </Helmet>
       <nav className={styles.navbar}>
         <Link to="/">
           <h1>Product name</h1>

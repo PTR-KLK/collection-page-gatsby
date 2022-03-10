@@ -6,14 +6,16 @@ import ListItem from 'src/components/listItem';
 import { CollectionPageProps } from 'src/types/collection';
 
 import * as styles from '../../styles/home.module.scss';
+import Breadcrumbs from 'src/components/breadcrumbs';
 
-const CollectionPage: React.FC<CollectionPageProps> = ({ data }) => {
+const CollectionPage: React.FC<CollectionPageProps> = ({ data, uri }) => {
   const {
     allCollection: { nodes: collection },
   } = data;
 
   return (
-    <Layout>
+    <Layout title="Collection">
+      <Breadcrumbs currentUri={uri} />
       <ul className={styles.list}>
         {collection.map((item) => {
           return (
