@@ -1,4 +1,7 @@
-@import 'variables';
+@import 'partials/variables';
+
+@import 'partials/about';
+@import 'partials/collection';
 
 html,
 body {
@@ -16,8 +19,7 @@ a {
   box-sizing: border-box;
 }
 
-main,
-.main--about {
+main {
   .menu--custom {
     a {
       color: $medium-gray;
@@ -27,49 +29,9 @@ main,
       }
     }
   }
-}
 
-main {
   .navbar--custom,
   .menu--custom {
     background: #ffffff;
-  }
-}
-
-.main--about {
-  .navbar--custom,
-  .menu--custom {
-    background: $light-blue;
-  }
-}
-
-.main {
-  &--collection,
-  &--item {
-    .navbar--custom,
-    .menu--custom {
-      background: $navy-blue;
-      color: #ffffff;
-    }
-
-    .menu--custom {
-      a {
-        color: #ffffff;
-
-        &:hover {
-          color: $medium-gray;
-        }
-      }
-    }
-
-    .hamburger--custom {
-      img {
-        filter: invert(100%);
-      }
-    }
-
-    .login--custom {
-      filter: brightness(0) invert(1);
-    }
   }
 }

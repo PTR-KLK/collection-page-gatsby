@@ -5,7 +5,7 @@ import Breadcrumbs from 'src/components/breadcrumbs';
 import HeroWrapper from 'src/components/heroWrapper';
 import Hero from 'src/components/hero';
 
-import * as styles from '../styles/about.module.scss';
+import * as styles from '../styles/modules/about.module.scss';
 
 type Props = {
   uri: string;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 
-import * as styles from '../styles/menuButton.module.scss';
+import * as styles from '../styles/modules/menuButton.module.scss';
 
 type Props = {
   onClick: () => void;

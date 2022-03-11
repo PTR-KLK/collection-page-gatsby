@@ -12,7 +12,7 @@ import Breadcrumbs from 'src/components/breadcrumbs';
 
 import { ItemPageProps } from 'src/types/itemPage';
 
-import * as styles from '../../styles/itemPage.module.scss';
+import * as styles from '../../styles/modules/itemPage.module.scss';
 
 const ItemPage: React.FC<ItemPageProps> = ({ data, uri }) => {
   const {

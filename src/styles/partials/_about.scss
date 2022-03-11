@@ -1,0 +1,18 @@
+@import 'variables';
+
+.main--about {
+  .menu--custom {
+    a {
+      color: $medium-gray;
+
+      &:hover {
+        color: #000000;
+      }
+    }
+  }
+
+  .navbar--custom,
+  .menu--custom {
+    background: $light-blue;
+  }
+}

@@ -7,7 +7,7 @@ import List from 'src/components/list';
 
 import { IndexPageProps } from 'src/types';
 
-import * as styles from '../styles/home.module.scss';
+import * as styles from '../styles/modules/home.module.scss';
 
 const Home: React.FC<IndexPageProps> = ({ data }) => {
   const {

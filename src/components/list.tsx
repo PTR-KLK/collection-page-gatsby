@@ -2,8 +2,9 @@ import React from 'react';
 
 import ListItem from 'src/components/listItem';
 
-import * as styles from '../styles/list.module.scss';
 import { Collection } from 'src/types';
+
+import * as styles from '../styles/modules/list.module.scss';
 
 const List: React.FC<Collection> = ({ children, nodes }) => {
   return (

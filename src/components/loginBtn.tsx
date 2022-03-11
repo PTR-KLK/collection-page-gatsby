@@ -1,7 +1,7 @@
 import React from 'react';
 import { StaticImage } from 'gatsby-plugin-image';
 
-import * as navbarStyles from '../styles/loginButton.module.scss';
+import * as navbarStyles from '../styles/modules/loginButton.module.scss';
 
 const LoginButton: React.FC = () => {
   return (

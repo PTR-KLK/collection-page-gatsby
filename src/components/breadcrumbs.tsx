@@ -3,7 +3,7 @@ import { Link } from 'gatsby';
 
 import { BreadcrumbsProps, PathItem } from 'src/types/breadcrumbs';
 
-import * as styles from '../styles/breadcrumbs.module.scss';
+import * as styles from '../styles/modules/breadcrumbs.module.scss';
 
 const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   currentUri,

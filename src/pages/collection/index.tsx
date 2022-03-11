@@ -9,7 +9,7 @@ import HeroWrapper from 'src/components/heroWrapper';
 
 import { CollectionPageProps } from 'src/types/collection';
 
-import * as styles from '../../styles/collectionPage.module.scss';
+import * as styles from '../../styles/modules/collectionPage.module.scss';
 
 const CollectionPage: React.FC<CollectionPageProps> = ({ data, uri }) => {
   const {

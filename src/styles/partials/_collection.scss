@@ -1,0 +1,32 @@
+@import 'variables';
+
+.main {
+  &--collection,
+  &--item {
+    .navbar--custom,
+    .menu--custom {
+      background: $navy-blue;
+      color: #ffffff;
+    }
+
+    .menu--custom {
+      a {
+        color: #ffffff;
+
+        &:hover {
+          color: $medium-gray;
+        }
+      }
+    }
+
+    .hamburger--custom {
+      img {
+        filter: invert(100%);
+      }
+    }
+
+    .login--custom {
+      filter: brightness(0) invert(1);
+    }
+  }
+}

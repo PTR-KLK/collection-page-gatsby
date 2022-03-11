@@ -5,8 +5,8 @@ import MenuBtn from './menuBtn';
 import LoginButton from './loginBtn';
 import Menu from './menu';
 
-import * as navbarStyles from '../styles/navbar.module.scss';
-import * as menuStyles from '../styles/menu.module.scss';
+import * as navbarStyles from '../styles/modules/navbar.module.scss';
+import * as menuStyles from '../styles/modules/menu.module.scss';
 
 const Navbar: React.FC = () => {
   const [open, setOpen] = useState(false);
