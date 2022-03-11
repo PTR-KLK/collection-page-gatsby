@@ -1,0 +1,29 @@
+@import 'mixins';
+@import "variables";
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+  border-bottom: 1px solid $medium-gray;
+  height: $navbar-height;
+  background: #ffffff;
+
+  @include tablet {
+    padding: 0 1.5rem;
+    justify-content: flex-start;
+    position: static;
+    border-bottom: none;
+  }
+}
+
+.pageTitle {
+  font-size: 1.5rem;
+  font-weight: 400;
+  line-height: 1.75rem;
+  letter-spacing: 0em;
+}

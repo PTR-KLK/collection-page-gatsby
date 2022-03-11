@@ -1,17 +1,52 @@
+@import 'mixins';
+@import "variables";
+
 .mobile {
   position: absolute;
-  top: 2rem;
+  top: $navbar-height;
+  right: 0;
   z-index: 2;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  padding: 0;
-  width: 100vw;
+  margin: 0;
+  padding: 1rem 2.5rem;
+  border-left: 1px solid $medium-gray;
+  height: calc(100vh - $navbar-height);
+  background: #ffffff;
+
+  a {
+    color: $medium-gray;
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+
+    & + a {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+    }
+  }
 }
 
 .desktop {
   display: flex;
+  padding: 0;
+  margin-left: 3rem;
+
+  @include laptop {
+    margin-left: 6rem;
+  }
+
   a {
-    margin-right: 1rem;
+    color: $medium-gray;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+
+    & + a {
+      margin-left: 1.5rem;
+    }
   }
 }

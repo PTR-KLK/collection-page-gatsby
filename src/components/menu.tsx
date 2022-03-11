@@ -5,11 +5,12 @@ type Props = {
   className?: string;
 };
 
-const Menu: React.FC<Props> = ({ className }) => {
+const Menu: React.FC<Props> = ({ children, className }) => {
   return (
     <ul className={className}>
       <Link to="/about">About</Link>
       <Link to="/collection">Collection</Link>
+      {children}
     </ul>
   );
 };
