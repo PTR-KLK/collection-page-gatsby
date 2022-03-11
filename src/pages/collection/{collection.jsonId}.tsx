@@ -8,8 +8,11 @@ import {
 } from 'gatsby-plugin-image';
 
 import Layout from 'src/components/layout';
-import { ItemPageProps } from 'src/types/itemPage';
 import Breadcrumbs from 'src/components/breadcrumbs';
+
+import { ItemPageProps } from 'src/types/itemPage';
+
+import * as styles from '../../styles/itemPage.module.scss';
 
 const ItemPage: React.FC<ItemPageProps> = ({ data, uri }) => {
   const {
@@ -26,10 +29,21 @@ const ItemPage: React.FC<ItemPageProps> = ({ data, uri }) => {
   return (
     <Layout title={`Product - ${title}`}>
       <Breadcrumbs currentUri={uri} customName={title} />
-      <section>
-        <h3>{title}</h3>
-        {imageSrc && <GatsbyImage image={imageData} alt={name} />}
-        <p>{description}</p>
+      <section className={styles.section}>
+        <h2 className={styles.heading}>{title}</h2>
+        <figure className={styles.figure}>
+          {imageSrc && (
+            <GatsbyImage
+              image={imageData}
+              alt={name}
+              className={styles.image}
+            />
+          )}
+          <figcaption className={styles.figcaption}>
+            <h3 className={styles.subheading}>Section Title</h3>
+            <p className={styles.paragraph}>{description}</p>
+          </figcaption>
+        </figure>
       </section>
     </Layout>
   );
