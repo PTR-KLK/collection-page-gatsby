@@ -9,6 +9,8 @@ import {
 
 import { ItemProps } from 'src/types/listItem';
 
+import * as styles from '../styles/listItem.module.scss';
+
 const ListItem: React.FC<ItemProps> = ({ id, title, image }) => {
   const imageSrc = image.src as ImageDataLike;
   const imageData = getImage(imageSrc) as IGatsbyImageData;
@@ -16,7 +18,7 @@ const ListItem: React.FC<ItemProps> = ({ id, title, image }) => {
   return (
     <Link to={`/collection/${id}`}>
       {imageSrc && <GatsbyImage image={imageData} alt={image.name} />}
-      <p>{title}</p>
+      <p className={styles.text}>{title}</p>
     </Link>
   );
 };

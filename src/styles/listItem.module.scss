@@ -1,0 +1,15 @@
+@import 'mixins';
+
+.text {
+  margin: 0.5rem 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
+
+  @include laptop {
+    margin: 1.25rem 0;
+    font-size: 18px;
+    line-height: 21px;
+  }
+}
