@@ -28,13 +28,14 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
     <nav className={styles.breadcrumbs}>
       <Link to="/">home</Link>
       {paths.slice(1).map((pathItem, idx) => {
-        return paths.slice(1).length - 1 !== idx ? (
-          <Link key={`breadcrumb-${idx}`} to={pathItem.uri}>
-            {pathItem.name}
-          </Link>
-        ) : (
+        return (
           <span key={`breadcrumb-${idx}`}>
-            {customName ? customName : pathItem.name}
+            <span className={styles.backslash}>/</span>
+            {paths.slice(1).length - 1 !== idx ? (
+              <Link to={pathItem.uri}>{pathItem.name}</Link>
+            ) : (
+              <span>{customName ? customName : pathItem.name}</span>
+            )}
           </span>
         );
       })}

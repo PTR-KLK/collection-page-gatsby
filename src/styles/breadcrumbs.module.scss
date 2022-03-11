@@ -1,8 +1,32 @@
+@import 'variables';
+@import 'mixins';
+
 .breadcrumbs {
   display: flex;
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid $medium-gray;
+  color: $medium-gray;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 19px;
+  letter-spacing: 0em;
   text-transform: capitalize;
 
-  a:after {
-    content: '/';
+  @include tablet {
+    padding: 2rem 5rem;
+    font-size: 18px;
+    line-height: 21px;
   }
+
+  @include large-desktop {
+    padding: 2rem calc(50% - 720px + 5rem);
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.backslash {
+  margin: 0 0.5rem;
 }

@@ -2,11 +2,13 @@ import React from 'react';
 import { graphql } from 'gatsby';
 
 import Layout from 'src/components/layout';
-import ListItem from 'src/components/listItem';
+import Hero from 'src/components/hero';
+import Breadcrumbs from 'src/components/breadcrumbs';
+import List from 'src/components/list';
+
 import { CollectionPageProps } from 'src/types/collection';
 
-import * as styles from '../../styles/home.module.scss';
-import Breadcrumbs from 'src/components/breadcrumbs';
+import * as styles from '../../styles/collectionPage.module.scss';
 
 const CollectionPage: React.FC<CollectionPageProps> = ({ data, uri }) => {
   const {
@@ -15,20 +17,12 @@ const CollectionPage: React.FC<CollectionPageProps> = ({ data, uri }) => {
 
   return (
     <Layout title="Collection">
+      <header className={styles.heroWrapper}>
+        <Hero className={styles.hero} />
+        <h2>Collection</h2>
+      </header>
       <Breadcrumbs currentUri={uri} />
-      <ul className={styles.list}>
-        {collection.map((item) => {
-          return (
-            <li className={styles.item} key={item.jsonId}>
-              <ListItem
-                id={item.jsonId}
-                title={item.title}
-                image={item.image}
-              />
-            </li>
-          );
-        })}
-      </ul>
+      <List nodes={collection} />
     </Layout>
   );
 };

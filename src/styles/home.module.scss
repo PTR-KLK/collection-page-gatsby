@@ -1,23 +1,6 @@
 @import 'mixins';
 @import 'variables';
 
-.list {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  justify-content: space-between;
-  padding: 0;
-}
-
-.item {
-  width: calc(50% - 0.5rem);
-  margin-bottom: 2rem;
-
-  @include laptop {
-    width: calc(25% - 1rem);
-  }
-}
-
 .hero {
   height: calc(100vh - $navbar-height);
   width: 100%;
@@ -30,20 +13,6 @@
 
   @include laptop {
     height: calc(75vh - $navbar-height);
-  }
-}
-
-.section {
-  margin: 0 1rem;
-
-  @include tablet {
-    margin: 0 5rem;
-  }
-
-  @include desktop {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding: 0 5rem;
   }
 }
 
@@ -75,9 +44,13 @@
   padding: 0.5rem 1rem;
   border-radius: 0.625rem;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   line-height: 19px;
   letter-spacing: 0em;
   color: #ffffff;
   background: $navy-blue;
+
+  @include laptop {
+    padding: 1rem 1.875rem;
+  }
 }
