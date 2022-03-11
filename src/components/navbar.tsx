@@ -32,17 +32,17 @@ const Navbar: React.FC = () => {
   }, [open, btnVisible]);
 
   return (
-    <nav className={navbarStyles.navbar}>
+    <nav className={`${navbarStyles.navbar} navbar--custom`}>
       <Link to="/">
         <h1 className={navbarStyles.pageTitle}>Product name</h1>
       </Link>
       {btnVisible ? (
         <MenuBtn onClick={() => setOpen(!open)} />
       ) : (
-        <Menu className={menuStyles.desktop} />
+        <Menu className={`${menuStyles.desktop} menu--custom`} />
       )}
       {open && (
-        <Menu className={menuStyles.mobile}>
+        <Menu className={`${menuStyles.mobile} menu--custom`}>
           <LoginButton />
         </Menu>
       )}

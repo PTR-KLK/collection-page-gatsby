@@ -27,7 +27,7 @@ const ItemPage: React.FC<ItemPageProps> = ({ data, uri }) => {
   const imageData = getImage(imageSrc) as IGatsbyImageData;
 
   return (
-    <Layout title={`Product - ${title}`}>
+    <Layout title={`Product - ${title}`} className="main--item">
       <Breadcrumbs currentUri={uri} customName={title} />
       <section className={styles.section}>
         <h2 className={styles.heading}>{title}</h2>

@@ -5,11 +5,12 @@ import Navbar from './navbar';
 
 type Props = {
   title?: string;
+  className?: string;
 };
 
-const Layout: React.FC<Props> = ({ children, title }) => {
+const Layout: React.FC<Props> = ({ children, title, className }) => {
   return (
-    <main>
+    <main className={className}>
       <Helmet>
         <meta charSet="utf-8" />
         <title>{title}</title>

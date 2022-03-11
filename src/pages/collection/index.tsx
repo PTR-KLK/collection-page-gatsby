@@ -17,7 +17,7 @@ const CollectionPage: React.FC<CollectionPageProps> = ({ data, uri }) => {
   } = data;
 
   return (
-    <Layout title="Collection">
+    <Layout title="Collection" className="main--collection">
       <HeroWrapper>
         <Hero className={styles.hero} />
         <h2>Collection</h2>

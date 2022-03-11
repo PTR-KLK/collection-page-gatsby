@@ -9,7 +9,10 @@ type Props = {
 
 const MenuBtn: React.FC<Props> = ({ onClick }) => {
   return (
-    <button className={styles.hamburger} onClick={onClick}>
+    <button
+      className={`${styles.hamburger} hamburger--custom`}
+      onClick={onClick}
+    >
       <StaticImage
         src="../images/menu.svg"
         alt="hamburger bar"

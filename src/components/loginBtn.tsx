@@ -5,7 +5,7 @@ import * as navbarStyles from '../styles/loginButton.module.scss';
 
 const LoginButton: React.FC = () => {
   return (
-    <button className={navbarStyles.loginButton}>
+    <button className={`${navbarStyles.loginButton} login--custom`}>
       <StaticImage
         src="../images/login.png"
         alt="person figure"

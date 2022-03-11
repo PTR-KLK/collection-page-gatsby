@@ -13,7 +13,7 @@ type Props = {
 
 const About: React.FC<Props> = ({ uri }) => {
   return (
-    <Layout title="About">
+    <Layout title="About" className="main--about">
       <HeroWrapper>
         <Hero className={styles.hero} />
         <h2>About</h2>
