@@ -11,8 +11,6 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
 }) => {
   const pathnameArr = currentUri.split('/');
 
-  console.log(pathnameArr);
-
   const paths = pathnameArr.slice(1).reduce(
     (prevPath: PathItem[], currPath: string): PathItem[] => {
       return [
@@ -26,23 +24,18 @@ const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
     [{ name: '', uri: '' }],
   );
 
-  console.log(paths);
-
   return (
     <nav className={styles.breadcrumbs}>
       <Link to="/">home</Link>
       {paths.slice(1).map((pathItem, idx) => {
-        return (
-          <>
-            /
-            {paths.slice(1).length - 1 !== idx ? (
-              <Link key={`breadcrumb-${idx}`} to={pathItem.uri}>
-                {pathItem.name}
-              </Link>
-            ) : (
-              <span>{customName ? customName : pathItem.name}</span>
-            )}
-          </>
+        return paths.slice(1).length - 1 !== idx ? (
+          <Link key={`breadcrumb-${idx}`} to={pathItem.uri}>
+            {pathItem.name}
+          </Link>
+        ) : (
+          <span key={`breadcrumb-${idx}`}>
+            {customName ? customName : pathItem.name}
+          </span>
         );
       })}
     </nav>

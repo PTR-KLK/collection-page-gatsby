@@ -1,4 +1,8 @@
 .breadcrumbs {
   display: flex;
   text-transform: capitalize;
+
+  a:after {
+    content: '/';
+  }
 }
