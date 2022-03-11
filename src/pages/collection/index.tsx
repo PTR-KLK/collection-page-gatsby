@@ -5,6 +5,7 @@ import Layout from 'src/components/layout';
 import Hero from 'src/components/hero';
 import Breadcrumbs from 'src/components/breadcrumbs';
 import List from 'src/components/list';
+import HeroWrapper from 'src/components/heroWrapper';
 
 import { CollectionPageProps } from 'src/types/collection';
 
@@ -17,10 +18,10 @@ const CollectionPage: React.FC<CollectionPageProps> = ({ data, uri }) => {
 
   return (
     <Layout title="Collection">
-      <header className={styles.heroWrapper}>
+      <HeroWrapper>
         <Hero className={styles.hero} />
         <h2>Collection</h2>
-      </header>
+      </HeroWrapper>
       <Breadcrumbs currentUri={uri} />
       <List nodes={collection} />
     </Layout>

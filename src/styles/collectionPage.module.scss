@@ -1,5 +1,4 @@
 @import 'mixins';
-@import 'variables';
 
 .hero {
   position: relative;
@@ -24,28 +23,5 @@
 
   @include tablet {
     height: 15rem;
-  }
-}
-
-.heroWrapper {
-  position: relative;
-  margin: 0;
-
-  h2 {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: 0;
-    font-size: 36px;
-    font-weight: 700;
-    line-height: 42px;
-    letter-spacing: 0em;
-    text-align: center;
-    transform: translate(-50%, -50%);
-
-    @include tablet {
-      font-size: 60px;
-      line-height: 70px;
-    }
   }
 }
